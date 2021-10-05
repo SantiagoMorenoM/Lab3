@@ -1,5 +1,4 @@
-# Code for the client
-##
+
 import hashlib
 import logging
 import math
@@ -9,9 +8,7 @@ import threading
 import time
 from tqdm import tqdm
 from datetime import datetime
-from threading import Thread
 
-# host = '54.162.149.119'
 IP = socket.gethostbyname(socket.gethostname())
 PORT = 4456
 ADDR = (IP, PORT)
@@ -19,13 +16,13 @@ BUFFER_SIZE = 4096
 
 File_path = "ArchivosRecibidos/"
 
-SYN = 'Hello'
-AKN_READY = 'Ready'
-AKN_NAME = 'Nombre'
-AKN_OK = 'Ok'
-AKN_HASH = 'HashOk'
+HELLO = 'Hello'
+READY = 'Ready'
+NOMBRE = 'Nombre'
+OK = 'Ok'
+HASH = 'HashOk'
 ERROR = 'Error'
-AKN_COMPLETE = 'Complete'
+COMPLETE = 'Completado'
 
 
 
@@ -111,10 +108,10 @@ class ClientProtocol:
         while True:
 
             try:
-                self.send_to_server(client_socket, SYN, "Client Says: Hail sent to server")
+                self.send_to_server(client_socket, HELLO, "Client Says: Hail sent to server")
 
                 reply = self.receive_from_server(client_socket)
-                self.verify_reply(reply, SYN)
+                self.verify_reply(reply, HELLO)
                 print("Client Says: Hail back from server")
 
                 reply = self.receive_from_server(client_socket)
@@ -125,7 +122,7 @@ class ClientProtocol:
 
                 print("Client Says: id {} received from server".format(self.id))
 
-                self.send_to_server(client_socket, AKN_READY,
+                self.send_to_server(client_socket, READY,
                                     "Client Says: communicating to server that client is ready for file transport")
 
 
@@ -137,7 +134,7 @@ class ClientProtocol:
 
                 self.server_file_name = reply
 
-                self.send_to_server(client_socket, AKN_NAME,
+                self.send_to_server(client_socket, NOMBRE,
                                     "Client{} Says: file name received from server: {}".format(self.id,
                                                                                                self.server_file_name))
 
@@ -147,7 +144,7 @@ class ClientProtocol:
 
                 serverHash = reply
 
-                self.send_to_server(client_socket, AKN_OK,
+                self.send_to_server(client_socket, OK,
                                     "Client{} Says: file hash received from server: {}".format(self.id, serverHash))
 
                 self.file_size = int(self.receive_from_server(client_socket))
@@ -180,7 +177,7 @@ class ClientProtocol:
                     f.close()
 
                 self.packages_received = self.file_size/BUFFER_SIZE;
-                self.send_to_server(client_socket, AKN_COMPLETE,
+                self.send_to_server(client_socket, COMPLETE,
                                     "Client{} Says: file transmission is complete".format(self.id))
 
                 self.running_time = time.time() - start_time
@@ -190,7 +187,7 @@ class ClientProtocol:
 
                 if is_valid:
 
-                    self.send_to_server(client_socket, AKN_HASH,
+                    self.send_to_server(client_socket, HASH,
                                         "File integrity is verified with calculated hash {}".format(calculated_hash))
                     client_socket.close()
 
