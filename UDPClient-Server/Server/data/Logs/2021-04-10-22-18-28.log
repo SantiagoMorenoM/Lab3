@@ -1,0 +1,20 @@
+INFO:root:2021-04-10-22-18-28
+INFO:root:Nombre del archivo: data/Files/100MB.txt; Tamaño del archivo: 104857611 
+INFO:root:Conexión al cliente 1 (192.168.80.1:64827)
+INFO:root:Conexión al cliente 2 (192.168.80.1:64829)
+INFO:root:_____________________________________________________________________________________________________
+INFO:root:Conexión exitosa:
+INFO:root:Cliente1: no
+INFO:root:Cliente2: no
+INFO:root:_____________________________________________________________________________________________________
+INFO:root:Tiempo de ejecución:
+INFO:root:Cliente1: 0.9906396865844727 s
+INFO:root:Cliente2: 0.8609895706176758 s
+INFO:root:_____________________________________________________________________________________________________
+INFO:root:Bytes enviados:
+INFO:root:Cliente1: 104857688.0 B
+INFO:root:Cliente2: 104857688.0 B
+INFO:root:_____________________________________________________________________________________________________
+INFO:root:Paquetes enviados:
+INFO:root:Cliente1: 25600.002685546875
+INFO:root:Cliente2: 25600.002685546875

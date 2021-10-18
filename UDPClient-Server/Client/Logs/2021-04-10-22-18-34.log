@@ -1,0 +1,9 @@
+INFO:root:2021-04-10 22:18:34
+INFO:root:_____________________________________________________________________________________________________
+INFO:root:Client1: File name: data/Files/100MB.txt
+INFO:root:Client1: File size: 104857611
+INFO:root:Client1: Client connection: (LAPTOP-4PK2QCBV:64827)
+INFO:root:Client1: Successful: yes
+INFO:root:Client1: Running time: 0.9946267604827881 s
+INFO:root:Client1: Bytes received: 104857688 B
+INFO:root:Client1: Packages received 25600.002685546875
